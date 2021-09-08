@@ -18,14 +18,13 @@ function App() {
       .then( (data) => {
         setDataObj(data);
         setLoaded(false);
+        
       })
     
     
     }, [search])
-
-
-  console.log(dataObj)
-
+    
+    console.log(dataObj)
 
   return !loaded ? 
   (
@@ -43,17 +42,21 @@ function App() {
 
 
       <ul>
+
       {
-        dataObj.docs.map((res) => {
+        dataObj.docs.filter( (obj) => obj.publish_date !== undefined && obj.isbn !== undefined && obj.author_name !== undefined)
+        .map((res) => {
           return (
             <li key={res.key}>
               <h2>{res.title}</h2>
-              <p>{res.author_name}</p>
+              <p>{res.author_name.join(",")}</p> 
+              <p>{res.publish_date[0]}</p>
+              <div>
+                <img src={`http://covers.openlibrary.org/b/isbn/${res.isbn[0]}-M.jpg`} alt="" />
+              </div>
             </li>
           )})
-      }
-        
-      
+      }      
       </ul>
       
 
