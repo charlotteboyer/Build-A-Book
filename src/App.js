@@ -19,7 +19,7 @@ function App() {
 
   useEffect( () => {
 
-    fetch(`http://openlibrary.org/search.json?q=${search}`)
+    fetch(`https://openlibrary.org/search.json?q=${search}`)
       .then( response => response.json())
       .then( (data) => {
         

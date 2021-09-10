@@ -11,7 +11,7 @@ const Results = (props) => {
                     <h2>{res.title}</h2>
                     <div className="container">
                         <div className="photo">
-                            <img src={`http://covers.openlibrary.org/b/isbn/${res.isbn[0]}-M.jpg`} alt={`book cover of ${res.title}`} />
+                            <img src={`https://covers.openlibrary.org/b/isbn/${res.isbn[0]}-M.jpg`} alt={`book cover of ${res.title}`} />
                         </div>
                         <div className="info">
                             <p>By: {res.author_name.join(", ")}</p>
