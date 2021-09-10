@@ -32,7 +32,7 @@ function App() {
 
   
   return (
-    <div className="App">
+    <div className="App wrapper">
       <h1>Build A Book: Book Search</h1>
       <form className="search">
         <label className="sr-only">Enter title</label>
