@@ -1,5 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react'; 
+import Results from './Results';
+import Sort from './Sort';
 
 function App() {
 
@@ -7,67 +9,67 @@ function App() {
 
   const [ search, setSearch ] =useState("");
 
-  const [ dataObj, setDataObj ] = useState([]);
+  const [ data, setData ] = useState([]);
 
   const [ loaded, setLoaded ] = useState( true )
+
+  const [ sortedData, setSortedData] = useState ([])
  
   useEffect( () => {
 
     fetch(`http://openlibrary.org/search.json?q=${search}`)
       .then( response => response.json())
       .then( (data) => {
-        setDataObj(data);
-        setLoaded(false);
         
+        setData(data.docs.filter((obj) => obj.publish_date && obj.isbn && obj.author_name));
+        setLoaded(false);
       })
-    
-    
-    }, [search])
-    
-    console.log(dataObj)
 
-  return !loaded ? 
-  (
+    }, [search])
+  
+  const sortData =  (filterChoice) => {
+
+      const copyOfData = [...data];
+
+      const sortedData =  copyOfData.sort((a,b) => {
+        if (filterChoice === "alphabet") {
+            return a.title > b.title ? 1 : -1
+          }
+        else if (filterChoice === "date") {
+          return b.publish_year[0] < a.publish_year[0]
+        } 
+    })
+      setData(sortedData)
+  }
+
+  
+  return (
     <div className="App">
       <h1>Build A Book: Book Search</h1>
-      <form >
+      <form className="search">
+        <label className="sr-only">Enter title</label>
         <input 
         type="text" 
+        placeholder="enter book title"
         value={query}
         onChange={(e) => {setQuery(e.target.value)}}/>
         <button
         type="button"
         onClick={() => setSearch(query)}>submit</button>
       </form>
+      <Sort sortData={sortData}/>
 
-
-      <ul>
-
-      {
-        dataObj.docs.filter( (obj) => obj.publish_date !== undefined && obj.isbn !== undefined && obj.author_name !== undefined)
-        .map((res) => {
-          return (
-            <li key={res.key}>
-              <h2>{res.title}</h2>
-              <p>{res.author_name.join(",")}</p> 
-              <p>{res.publish_date[0]}</p>
-              <div>
-                <img src={`http://covers.openlibrary.org/b/isbn/${res.isbn[0]}-M.jpg`} alt="" />
-              </div>
-            </li>
-          )})
-      }      
-      </ul>
-      
-
-
+      <Results loaded={loaded} data={data}/>
 
     </div>
-    ) : (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
+    ) 
 }
 
 export default App;
+
+
+//pseudocose 
+
+//create search form where searching a title returns book information from API 
+//create filtering form to then filter through those search items 
+//
