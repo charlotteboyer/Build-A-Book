@@ -30,6 +30,9 @@ a.	What would you add to your solution if you had more time?
     NOTE-datetime so that they are easily accessible and sortable. 
     d. It would be cool if there was a synopsis about the book that you could access through the api and display on the page. 
 5.	Please describe yourself using correctly formatted JSON.
+
+
+```
     {
         "Name": "charlotte",
         "webDeveloper" : true, 
