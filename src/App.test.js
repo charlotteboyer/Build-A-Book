@@ -7,4 +7,6 @@ test('renders learn react link', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-
+it("renders without crashing", () => {
+  shallow(<App />);
+});

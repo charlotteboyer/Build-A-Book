@@ -14,9 +14,12 @@ function App() {
 
   const [ loaded, setLoaded ] = useState( true )
 
+  // radioRef used to clear the radio buttons after resubmitting new title without having to refresh the page 
+
   const radioRef = useRef();
 
-
+  // API call to openlibrary
+  //filtering publish year, isbn, author name so that only results with these options appear otherwise the map did not work - results came back undefined 
   useEffect( () => {
 
     fetch(`https://openlibrary.org/search.json?q=${search}`)
@@ -58,6 +61,10 @@ export default App;
 
 //pseudocose 
 
-//create search form where searching a title returns book information from API 
-//create filtering form to then filter through those search items 
-//
+//create search form where searching a title returns book information from open libary API 
+  //do this by making an api call through fetch, returning only if a title query has been submitted 
+    //create an initial filter in fetch to filter out books that do not have the requirements 
+//create filtering form to then filter through those search items alphabetically and by date
+  //assign radio buttons values 
+  //register those values 
+  //create an sort function with an if else statement, depending on which value is selected, the array will sort itself accordingly 

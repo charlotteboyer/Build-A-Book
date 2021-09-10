@@ -32,6 +32,8 @@ h1 {
   padding: 10px 0; 
 }
 
+/* form styling  */
+
 .search input{
   font-family: 'Bebas Neue', cursive;
   font-size: 2rem;
@@ -69,6 +71,8 @@ h1 {
   margin: 10px;
 }
 
+/* list item styling here  */
+
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -83,6 +87,7 @@ li {
   border: solid 2px black;
   
 }
+/* can tab through the list items for accessibility  */
 
 li:active,
 li:focus {

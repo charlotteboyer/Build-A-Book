@@ -1,7 +1,6 @@
 Technical questions
-Please answer the following questions in a markdown file called Answers to technical questions.md.
 1.	How long did you spend on the coding assignment? 
-    I spent around 8 hours building this assignment. 
+    I spent the better part of the last three days building this app and it took a lot of work. Luckily I was up for the challenge. I've been wanting to work more with React and one of my top skills is researching and outsourcing problems that I encounter. I'm still fairly new to React, and the API's I've worked with in the past were much more accessible and streamlined. Though it took me a long time, I'm grateful for it. I feel much more confident in my skills and I've gained a deeper understanding of React in the process. Practice makes perfect! 
 a.	What would you add to your solution if you had more time?
     If I had more time I would add the below features: 
     1) to sort alphabetically and by date in ascending and descending order 

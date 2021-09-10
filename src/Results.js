@@ -2,6 +2,8 @@ const Results = (props) => {
 
     const { loaded, data } = props 
 
+    // map through the api object array and return key, title, isbn, publish year 
+
     return !loaded ?(
 
     <ul>

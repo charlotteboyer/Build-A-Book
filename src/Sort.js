@@ -2,7 +2,8 @@ const Sort = (props ) => {
 
     const { setData, data, radioRef } = props
 
-    //the onChange function 
+    //the onChange function that takes the radio button value and applies it to the copy of Data  array which then reorganizes this array alphabetically or by date 
+    
     const onChange = (event) => {
         const copyOfData = [...data];
 
