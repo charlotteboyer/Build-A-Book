@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react'; 
 import Results from './Results';
 import Sort from './Sort';
+import { useRef } from 'react';
 
 function App() {
 
@@ -13,34 +14,21 @@ function App() {
 
   const [ loaded, setLoaded ] = useState( true )
 
-  const [ sortedData, setSortedData] = useState ([])
- 
+  const radioRef = useRef();
+
+
   useEffect( () => {
 
     fetch(`http://openlibrary.org/search.json?q=${search}`)
       .then( response => response.json())
       .then( (data) => {
         
-        setData(data.docs.filter((obj) => obj.publish_date && obj.isbn && obj.author_name));
+        setData(data.docs.filter((obj) => obj.publish_year && obj.isbn && obj.author_name));
         setLoaded(false);
+        radioRef.current.checked = false;
       })
 
     }, [search])
-  
-  const sortData =  (filterChoice) => {
-
-      const copyOfData = [...data];
-
-      const sortedData =  copyOfData.sort((a,b) => {
-        if (filterChoice === "alphabet") {
-            return a.title > b.title ? 1 : -1
-          }
-        else if (filterChoice === "date") {
-          return b.publish_year[0] < a.publish_year[0]
-        } 
-    })
-      setData(sortedData)
-  }
 
   
   return (
@@ -57,7 +45,7 @@ function App() {
         type="button"
         onClick={() => setSearch(query)}>submit</button>
       </form>
-      <Sort sortData={sortData}/>
+      <Sort setData={setData} data={data} radioRef={radioRef}/>
 
       <Results loaded={loaded} data={data}/>
 

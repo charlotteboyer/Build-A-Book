@@ -1,25 +1,29 @@
-import { useState } from "react";
-
 const Sort = (props ) => {
 
-    const { sortData } = props
+    const { setData, data, radioRef } = props
 
-    const [filterChoice, setFilterChoice] = useState("");
-
-    //the onChange function takes the value and sets the state with it 
+    //the onChange function 
     const onChange = (event) => {
-        console.log(event.target.value)
-        setFilterChoice(event.target.value)
-        sortData(filterChoice)
+        const copyOfData = [...data];
+
+        const sortedData = copyOfData.sort(function(a, b){
+            if (event.target.value === "alphabet") {
+                return a.title > b.title ? 1 : -1
+            }
+            else if (event.target.value === "date") {
+                return b.publish_year[0] < a.publish_year[0]
+            }
+            return null
+        })
+        setData(sortedData)
     }
 
-    // used radio buttons because when using a drop down menu or buttons the value would only be registered on the second click event not the first 
     
     return (
         <form onChange={onChange} className="radioButtons">
             <label htmlFor="sort" className="sr-only">Sort</label>
-            sort a-z<input type="radio" value="alphabet" name="radio"/>
-            sort by date<input type="radio" value="date" name="radio"/> 
+            sort a-z<input type="radio" value="alphabet" name="radio" ref={radioRef}/>
+            sort by date<input type="radio" value="date" name="radio" ref={radioRef}/>
         </form>
     )
 

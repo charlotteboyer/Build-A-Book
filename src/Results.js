@@ -2,18 +2,20 @@ const Results = (props) => {
 
     const { loaded, data } = props 
 
-
     return !loaded ?(
 
     <ul>
         {data.map((res) => {
             return (
                 <li key={res.key}>
+                    <div className="container">
+                        <img src={`http://covers.openlibrary.org/b/isbn/${res.isbn[0]}-M.jpg`} alt={`book cover of ${res.title}`} />
                     <h2>{res.title}</h2>
                     <p>{res.author_name.join(",")}</p>
-                    <p>{res.publish_date[0]}</p>
+                    <p>{res.publish_year[0]}</p>
                     <div>
-                        <img src={`http://covers.openlibrary.org/b/isbn/${res.isbn[0]}-M.jpg`} alt="" />
+                        
+                    </div>
                     </div>
                 </li>
             )
