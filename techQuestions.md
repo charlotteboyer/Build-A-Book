@@ -8,6 +8,8 @@ a.	What would you add to your solution if you had more time?
     3) Adding a feature where you hover over the list-item and get a larger modal of the list item. 
 2.	What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that shows how you've used it.
     Recently I've been learning a lot about class components in React. In my program we only use functional components though class components do still exist "in the wild" and a lot of resources only have solutions to problems in class components. Functional components even though they first appearing in 2018 are much more clean and readable than their predecessors. The best part about functional components are hooks! I'm a big fan of both useState and UseEffect but here is a example of me using useEffect:
+    
+    ```
         useEffect( () => {
 
             fetch(`http://openlibrary.org/search.json?q=${search}`)
@@ -41,9 +43,9 @@ a.	What would you add to your solution if you had more time?
                 "wearsGlasses" : true, 
                 "isTall" : false,
             }
-            "favorites" : {
+            "favourites" : {
                 "book": "vernon_subutex",
-                "movie": "", 
+                "movie": "Eternal Sunshine of the Spotless Mind", 
                 "band" : "coldplay",
 
             }
